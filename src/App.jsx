@@ -1,13 +1,18 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import React from "react";
+import Favorites from "./components/Favorites";
+import Meals from "./components/Meals";
+import Modal from "./components/Modal";
+import Search from "./components/Search";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <main>
-      <h1>Meals app</h1>
+      <Favorites />
+      <Meals />
+      <Modal />
+      <Search />
     </main>
   );
 }
