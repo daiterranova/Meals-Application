@@ -30,3 +30,9 @@ This project is based on the following tutorial:
 1. In the Meals component, import `useContext` and `AppContext` to create a new constant variable that contains the context.
 2. Print to the console the context. You must able to see the `value` pass to `<AppProvider>` component.
 3. Create a custom hook inside of the `context.jsx` file that returns the context and replace it for the steps 1 and 2 in the `Meals` component.
+
+### Data Fetching
+
+1. Import `useEffect` from **React** on the context.js file.
+2. Create a function to fetch data from "https://randomuser.me/api/", using async/await and print the response to the console.
+3. Called the function inside of the `useEffect` hook and pass a second parameter an empty array.
