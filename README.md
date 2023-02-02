@@ -1,4 +1,6 @@
-# Setting up Project Structure
+# Meals Application
+
+## Setting up Project Structure
 
 This project is based on the following tutorial:
 
@@ -13,3 +15,18 @@ This project is based on the following tutorial:
    - Modal
    - Favorites
 3. Import all the components in the App.jsx file
+
+## Creating Context
+
+### Setting Provider
+
+1. Create a `content.jsx` file and import useContext using destructuring.
+2. Call to React.createContext and keep it in a variable called `AppContext`.
+3. Create the AppProvider component and return the context (AppContext) using a Provider. Set the value property with the value of `"hello"`.
+4. Export the component and the context and import the component in the `main.jsx` file, grapping the `<App/>` component with `<AppProvider/>`.
+
+### Using Context to consume data
+
+1. In the Meals component, import `useContext` and `AppContext` to create a new constant variable that contains the context.
+2. Print to the console the context. You must able to see the `value` pass to `<AppProvider>` component.
+3. Create a custom hook inside of the `context.jsx` file that returns the context and replace it for the steps 1 and 2 in the `Meals` component.
