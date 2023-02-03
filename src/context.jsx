@@ -1,26 +1,33 @@
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import React from "react";
+import axios from "axios";
+
 const AppContext = React.createContext();
 
+const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
+
 const AppProvider = ({ children }) => {
+  //we use an empty array because we will be iterating over an array of meals
+  const [meals, setMeals] = useState([]);
+
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
-  const fetchData = async () => {
+  const fetchMeals = async (url) => {
     try {
-      const response = await fetch("https://randomuser.me/api/");
-      const data = await response.json();
-      console.log(data);
+      const response = await axios(url);
+      setMeals(response.data.meals);
+      console.log(meals);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchMeals(allMealsUrl);
+  });
 
   return (
-    <AppContext.Provider value={{ name: "john", role: "student" }}>
-      {children}
-    </AppContext.Provider>
+    //pass the array meals to the entire app
+    <AppContext.Provider value={{ meals }}>{children}</AppContext.Provider>
   );
 };
 
