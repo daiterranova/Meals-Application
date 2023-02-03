@@ -4,7 +4,15 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const Meals = () => {
   //passing the context to the component
-  const { meals } = useGlobalContext();
+  const { meals, loading } = useGlobalContext();
+
+  if (loading) {
+    return (
+      <section className="section">
+        <h4>Loading... </h4>
+      </section>
+    );
+  }
 
   return (
     <section className="section-center">
