@@ -19,13 +19,17 @@ const AppProvider = ({ children }) => {
     setLoading(true);
     try {
       const response = await axios(url);
-      setMeals(response.data.meals);
-      console.log(response.data.meals);
+      if (response.data.meals) {
+        setMeals(response.data.meals);
+      } else {
+        setMeals([]);
+      }
     } catch (error) {
       console.log(error);
     }
     setLoading(false);
   };
+
   useEffect(() => {
     fetchMeals(allMealsUrl);
   }, []);

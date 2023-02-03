@@ -13,7 +13,12 @@ const Meals = () => {
       </section>
     );
   }
-
+  if (meals.length < 1)
+    return (
+      <h4 className="section">
+        No meals matched with your search. Please, try again
+      </h4>
+    );
   return (
     <section className="section-center">
       {meals.map((meal) => {

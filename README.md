@@ -37,7 +37,7 @@ This project is based on the following tutorial:
 2. Create a function to fetch data from "https://randomuser.me/api/", using async/await and print the response to the console.
 3. Called the function inside of the `useEffect` hook and pass a second parameter an empty array.
 
-### Meals Component
+## Meals Component
 
 ---
 
@@ -85,3 +85,9 @@ We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will s
 2. Change the state of loading to true before catching the data inside of the fetchMeals function and set it again to true after the fetch data block.
 3. Pass it the prop to the context component.
 4. Include the prop in the Meals component, and before of return every meal card, show a loading sign when loading is set to true.
+
+### No items
+
+1. In the context component, evaluate if exist data. If there is, set up the meals state variable with the value of that data. If there isn't, set up meals to an empty array.
+2. In the Meals component, evaluate the case of if data's length is less than 1, return a message that says there's no matches.Make this evaluation before returning the list of cards.
+3. Test if our logic works gibbering the url passed to fetchData calling.
