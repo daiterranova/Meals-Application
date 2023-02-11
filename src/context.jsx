@@ -14,6 +14,7 @@ const AppProvider = ({ children }) => {
   //we use an empty array because we will be iterating over an array of meals
   const [meals, setMeals] = useState([]);
 
+  const [searchTerm, setSearchTeam] = useState("");
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
   const fetchMeals = async (url) => {
     setLoading(true);
@@ -29,13 +30,13 @@ const AppProvider = ({ children }) => {
     }
     setLoading(false);
   };
-
+  // every time that the search value changes, we fetch the data of meals
   useEffect(() => {
-    fetchMeals(allMealsUrl);
-  }, []);
+    fetchMeals(`${allMealsUrl}${searchTerm}`);
+  }, [searchTerm]);
   return (
     //pass the array meals to the entire app
-    <AppContext.Provider value={{ meals, loading }}>
+    <AppContext.Provider value={{ meals, loading, setSearchTeam }}>
       {children}
     </AppContext.Provider>
   );

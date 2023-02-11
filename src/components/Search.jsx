@@ -3,12 +3,17 @@ import { useGlobalContext } from "../context";
 
 const Search = () => {
   const [text, setText] = useState("");
+  const { setSearchTeam } = useGlobalContext();
 
   const handleChange = (e) => {
     setText(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (text) {
+      setSearchTeam(text);
+      setText("");
+    }
   };
 
   return (
@@ -32,3 +37,5 @@ const Search = () => {
   );
 };
 export default Search;
+
+//handle the submit button. first avoid the default behaviour (refresh the page). after that checks if there is a text, searchTerm is set to that value and then set the text to an empty string
