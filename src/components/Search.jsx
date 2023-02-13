@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 
 const Search = () => {
   const [text, setText] = useState("");
-  const { setSearchTeam } = useGlobalContext();
+  const { setSearchTeam, fetchRandomMeal } = useGlobalContext();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -14,6 +14,11 @@ const Search = () => {
       setSearchTeam(text);
       setText("");
     }
+  };
+  const handleRandomMeal = () => {
+    setSearchTeam("");
+    setText("");
+    fetchRandomMeal();
   };
 
   return (
@@ -29,7 +34,10 @@ const Search = () => {
         <button className="btn" type="submit">
           search
         </button>
-        <button className="btn btn-hipster" type="button">
+        <button
+          className="btn btn-hipster"
+          type="button"
+          onClick={handleRandomMeal}>
           surprise me!
         </button>
       </form>
@@ -37,5 +45,3 @@ const Search = () => {
   );
 };
 export default Search;
-
-//handle the submit button. first avoid the default behaviour (refresh the page). after that checks if there is a text, searchTerm is set to that value and then set the text to an empty string

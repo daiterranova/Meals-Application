@@ -30,13 +30,26 @@ const AppProvider = ({ children }) => {
     }
     setLoading(false);
   };
+
+  const fetchRandomMeal = () => {
+    fetchMeals(randomMealUrl);
+  };
+
+  //loads all the meals when the component is loaded
+  useEffect(() => {
+    fetchMeals(allMealsUrl);
+  }, []);
+
   // every time that the search value changes, we fetch the data of meals
   useEffect(() => {
+    //the condition cuts the execution to avoid change the state of searchTerm and avoid also the re-render
+    if (!searchTerm) return;
     fetchMeals(`${allMealsUrl}${searchTerm}`);
   }, [searchTerm]);
   return (
     //pass the array meals to the entire app
-    <AppContext.Provider value={{ meals, loading, setSearchTeam }}>
+    <AppContext.Provider
+      value={{ meals, loading, setSearchTeam, fetchRandomMeal }}>
       {children}
     </AppContext.Provider>
   );
