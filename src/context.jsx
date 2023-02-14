@@ -10,10 +10,10 @@ const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 const AppProvider = ({ children }) => {
   //initiliaze loading to false
   const [loading, setLoading] = useState(false);
-
   //we use an empty array because we will be iterating over an array of meals
   const [meals, setMeals] = useState([]);
 
+  const [searchTerm, setSearchTerm] = useState("");
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
   const fetchMeals = async (url) => {
     setLoading(true);
@@ -30,13 +30,26 @@ const AppProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const fetchRandomMeal = () => {
+    fetchMeals(randomMealUrl);
+  };
+
+  //loads all the meals when the component is loaded
   useEffect(() => {
     fetchMeals(allMealsUrl);
   }, []);
+
+  // every time that the search value changes, we fetch the data of meals
+  useEffect(() => {
+    //the condition cuts the execution to avoid change the state of searchTerm and avoid also the re-render
+    if (!searchTerm) return;
+    fetchMeals(`${allMealsUrl}${searchTerm}`);
+  }, [searchTerm]);
   return (
     //pass the array meals to the entire app
-    <AppContext.Provider value={{ meals, loading }}>
-      {children}
+    <AppContext.Provider
+      value={{ meals, loading, setSearchTerm, fetchRandomMeal }}>
+      {children} 
     </AppContext.Provider>
   );
 };

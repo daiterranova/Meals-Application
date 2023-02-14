@@ -9,10 +9,10 @@ import "./App.css";
 function App() {
   return (
     <main>
+      <Search />
       {/*  <Favorites /> */}
       <Meals />
-      {/* <Modal />
-      <Search /> */}
+      {/* <Modal /> */}
     </main>
   );
 }
