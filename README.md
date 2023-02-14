@@ -45,13 +45,13 @@ This project is based on the following tutorial:
 
 We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will see how to get the data using `fetch` and also using `axios`.
 
-##### Using fetch
+#### Using fetch
 
 1. From the API get the URLs for [Search meal by name](www.themealdb.com/api/json/v1/1/search.php?s=) and [Lookup a single random meal](www.themealdb.com/api/json/v1/1/random.php) and set each value to a variable.
 2. Set a fetchMeals in such a way that can receive any url.
 3. Call fetchMeals inside of the useEffect hook.
 
-##### Using axios
+#### Using axios
 
 1. Install axios as a dependency:
 
@@ -91,3 +91,29 @@ We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will s
 1. In the context component, evaluate if exist data. If there is, set up the meals state variable with the value of that data. If there isn't, set up meals to an empty array.
 2. In the Meals component, evaluate the case of if data's length is less than 1, return a message that says there's no matches.Make this evaluation before returning the list of cards.
 3. Test if our logic works gibbering the url passed to fetchData calling.
+
+### Search Component
+
+1. Create the search component html structure:
+   - Header element that contains:
+     - a form with 1 input and two buttons
+2. Set the classes and styles for the component. You can grab the styles from [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).
+3. Create "text" state variable and set it to an empty string.
+4. Create two handle functions: handleSubmit (for the submit event) and handleChange(for the input of the user).
+5. Set up the setText variable inside of the handleChange function with the value of `e.target.value`. The handle functions must receive the *event*.
+6. Set the handleSubmit function to prevent the default behaviour of the page with `e.preventDefault()`.
+
+#### Setting search term
+
+1. In the context.js file, create a state variable for the search term and set it to an empty string.
+2. Passed it to the `<App Provider>` component the SetSearchTerm as prop, and destructured it inside of the Search component, using global Context.
+3. Inside of the handleSubmit function, create a condition that evaluates if `text`is true, set SetSearchTerm to that variable, and change the value of the `text` state variable to and empty string.
+4. In the context.js file, implement a useEffect for fetch the meal according to the search term, using the fetchMeals function and passing it to the **allMealsUrl** concatenated with **searchTerm**. The useEffect receives as a second parameter the state of searchTerm. Consider the case of is **SearchTerm** is empty.
+
+#### Fetching random meal
+
+1. In the context.js file, create a function that calls to fetchMeals and receives as a parameter the randomMealUrl. Passed it through props to the `<App Provider>` component, then, destructured it inside of the Search component, in the global Context.
+2. In the Search component, create a handle called `handleRandomMeal` and set: SearchTerm and text to and empty string, and call to fetchRandomMeal function. 
+3. Set inside of the button for random meal, the onClick property to the handle.
+
+
