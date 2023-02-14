@@ -42,6 +42,10 @@ const AppProvider = ({ children }) => {
     setSelectedMeal(meal)
     setShowModal(true)
   }
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   //loads all the meals when the component is loaded
   useEffect(() => {
     fetchMeals(allMealsUrl);
@@ -56,7 +60,7 @@ const AppProvider = ({ children }) => {
   return (
     //pass the array meals to the entire app
     <AppContext.Provider
-      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal}}>
+      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal,closeModal}}>
       {children} 
     </AppContext.Provider>
   );
