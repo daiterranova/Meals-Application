@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
   const [meals, setMeals] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
   const fetchMeals = async (url) => {
     setLoading(true);
