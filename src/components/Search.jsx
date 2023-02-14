@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 
 const Search = () => {
   const [text, setText] = useState("");
-  const { setSearchTeam, fetchRandomMeal } = useGlobalContext();
+  const { setSearchTerm, fetchRandomMeal } = useGlobalContext();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -11,12 +11,12 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text) {
-      setSearchTeam(text);
+      setSearchTerm(text);
       setText("");
     }
   };
   const handleRandomMeal = () => {
-    setSearchTeam("");
+    setSearchTerm("");
     setText("");
     fetchRandomMeal();
   };
