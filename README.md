@@ -116,4 +116,48 @@ We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will s
 2. In the Search component, create a handle called `handleRandomMeal` and set: SearchTerm and text to and empty string, and call to fetchRandomMeal function. 
 3. Set inside of the button for random meal, the onClick property to the handle.
 
+### Modal Component
 
+---
+#### Basic structure
+1. Inside of the Modal component, return a h1, inside of a div, all inside of a aside element, and set a class called `modal-container` for the div and `modal-overlay` for the aside element.
+2. Create an state variable for show the modal, inside of the context.js file, and set the value to true.
+3. Import the `useGlobalContext`hook in the App and the Modal jsx file.
+4. In the `App.jsx` file:
+   - import the global context and render the `Modal` component when `showModal` is `true`.
+   - destructure the `showModal` variable and set it to the `useGlobalContext()` hook.
+   - render the modal in case of showModal it is true.
+
+#### Styles
+
+You can style the modal container and the modal overlay to center the modal in the screen by your own, or you can just grab the styles from the [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).
+
+#### Select Meal
+
+Inside of the context file: 
+1. Create a state variable called `selected` and initialize it to **null**.
+2. Create a function to select a meal that:
+   - finds a meal matching it with its id and passed it to the setSelectedMeal function as a parameter.
+   - set ShowModal value to **true**.
+3. Passe to the `<App Provider>` component the function to select a meal and the state variable selectedMeal as a prop. 
+4. Inside of the `Meals` component, pass it the **selectMeal** function to the  `useGlobalContext` hook and also inside of the `img` element as a onClick prop. Use an arrow function to avoid the automatically call of the function.
+
+#### Close Modal
+
+1. Create a function inside of the context.js file and inside of it, set the showModal state to false, and passed it to the `<App Provider>` component as a prop.
+2. In the Meals component, destructure selectedMeal and closeModal from the useGlobalContext hook.
+3. In the return structure, add a button element with the onClick prop and set it to the closeModal reference.
+
+#### Setting html structure Modal and Display
+From the meals object, we can see the property that has every meal object, and choose which one we want to display.
+I choose to show the following properties:
+   - The image of the meal `strMealThumb`
+   - The name of the meal (title) `strMeal`
+   - The category of the meal (tag) `strCategory`
+   - The instructions for cook the meal `strInstructions`
+   - Original source `strSource`
+We can destructure the properties to use each one and simplify the syntax.
+
+Now with this properties, we create the modal structure showing: image, title, description and tag.
+
+We catch the styles from the [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).

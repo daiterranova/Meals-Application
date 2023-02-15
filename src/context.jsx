@@ -14,6 +14,8 @@ const AppProvider = ({ children }) => {
   const [meals, setMeals] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState(null);
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
   const fetchMeals = async (url) => {
     setLoading(true);
@@ -33,6 +35,16 @@ const AppProvider = ({ children }) => {
   const fetchRandomMeal = () => {
     fetchMeals(randomMealUrl);
   };
+  const selectMeal = (idMeal, favoriteMeal) => {
+    console.log(idMeal)
+    let meal;
+    meal = meals.find((meal) => meal.idMeal === idMeal);
+    setSelectedMeal(meal)
+    setShowModal(true)
+  }
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   //loads all the meals when the component is loaded
   useEffect(() => {
@@ -48,7 +60,7 @@ const AppProvider = ({ children }) => {
   return (
     //pass the array meals to the entire app
     <AppContext.Provider
-      value={{ meals, loading, setSearchTerm, fetchRandomMeal }}>
+      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal,closeModal}}>
       {children} 
     </AppContext.Provider>
   );
