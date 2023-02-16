@@ -12,9 +12,9 @@ const {selectMeal, favorites,removeFromFavorites } = useGlobalContext();
           {
             favorites.map((favorite) => {
               const {idMeal,strMealThumb: image,strMeal:title } = favorite
-              return (  <div className="favorite-item img">
-                  <img id={idMeal} src={image} alt={title} className="favorites-img img"/>
-                  <button className="remove-btn" onClick={(idMeal) => removeFromFavorites(idMeal) }>remove</button>
+              return (  <div key={idMeal} className="favorite-item">
+                  <img  id={idMeal} src={image} alt={title} className="img favorites-img"/>
+                  <button className="remove-btn" onClick={() => removeFromFavorites(idMeal) }>remove</button>
                 </div>
             )})
           }
