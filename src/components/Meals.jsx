@@ -4,7 +4,7 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const Meals = () => {
   //passing the context to the component
-  const { meals, loading, selectMeal } = useGlobalContext();
+  const { meals, loading, selectMeal, addFavorites } = useGlobalContext();
 
   if (loading) {
     return (
@@ -28,7 +28,7 @@ const Meals = () => {
             <img src={image} className="img" onClick={() => {selectMeal(idMeal)}}/>
             <footer>
               <h5>{title}</h5>
-              <button className="like-btn">
+              <button className="like-btn" onClick={() => {addFavorites(idMeal)}} >
                 <FaRegThumbsUp />
               </button>
             </footer>
