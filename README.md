@@ -161,3 +161,49 @@ We can destructure the properties to use each one and simplify the syntax.
 Now with this properties, we create the modal structure showing: image, title, description and tag.
 
 We catch the styles from the [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).
+
+### Favorites Component
+
+--- 
+#### Setting Favorites 
+
+1. Create a state variable for favorites and set it with a initial value of an empty array.
+
+#### Add Favorites
+Create a function that add a meal as a favorite and passed as a parameter the id of the meal with the following logic:
+   - iterate through the array of meals looking for the meal that matches with the idMeal and store it in a variable.
+   - repeat the previous step but with the favorites array and store the value in another variable called alreadyFavorite
+   - consider the situation if alreadyFavorite exists, cut the execution of the function.
+   - create a variable for update the favorites state that concat the favorites array with the meal object inside of a new array.
+   - set the favorites state variable to the update variable.
+ 
+#### Remove from favorites
+1. Create a function that iterates trough the favorites array and return the array without the meal that we want to remove (use filter method). Store the result in a variable
+2. Set the favorites state variable using the result variable from step 1.
+
+#### Render Favorites
+
+1. In the App.jsx file, we will render the Favorites component only if the length of the favorites state variable is bigger than 0.
+2. In the Favorites component, destructure the favorites variable, selectMeal function and removeFromFavorites function and store it in the useGlobalContext hook.
+3. Set up the html structure:
+   - `section` with the folllowing nested elements:
+      - `div` with the class favorites-content
+         - a `heading` title that says **Favorites**
+         - another `div` with the favorites-container class. 
+Inside of the `div favorites-container`, map the array of favorites, destructure for every meal the id and the image properties so you can return them with the proper html structure (the image inside of a div and a remove button).
+
+#### Styles
+
+We catch the styles from the [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).
+         
+#### Refactor selectMeal function
+
+1. Add the favorites array to the parameters that receive the function and consider the case in which the favoriteMeal exists, then find that meal iterating through the favorites array.
+2. Passed it to the img element inside of the Favorites component a onClick prop that receives selectMeal function with the idMeal as first parameter and a true value as a second parameter.
+
+#### Add favorites to Local Storage
+
+1. On the addFavorites function, after setting the favorites state variable to the current array, set the local storage to the favorites variable as first parameter, and as the second one, using `JSON.stringfy`method, pass the updated array of favorites.
+2. Repeat step 1 inside of the removeFromFavorites function.
+3. Create a function to get the favorites array from the local storage, and consider the case if there's a favorites array, set that variable to the information stored in local storage. If it isn't, set it favorites to an empty array.
+4. Passed it the previous function as the initial value to the favorites array inside of the `<App Provider>`.
