@@ -7,6 +7,17 @@ const AppContext = React.createContext();
 const allMealsUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
+const getFavoritesFromLocalStorage = () => {
+  let favorites = localStorage.getItem('favorites')
+  if(favorites){
+    favorites = JSON.parse(localStorage.getItem('favorites'))
+  }
+  else{
+    favorites = []
+  }
+  return favorites
+}
+
 const AppProvider = ({ children }) => {
   //initiliaze loading to false
   const [loading, setLoading] = useState(false);
@@ -15,7 +26,7 @@ const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(getFavoritesFromLocalStorage());
   //fetch data from an url, and print it. we call the function in the use effect hook, passing a 2nd parameter an [] that executes the code every time that the component is mounted
   const fetchMeals = async (url) => {
     setLoading(true);
@@ -38,7 +49,7 @@ const AppProvider = ({ children }) => {
   const selectMeal = (idMeal, favoriteMeal) => {
     let meal;
     if(favoriteMeal){
-      meal = favorites.find((meal) => meal.id === idMeal);
+      meal = favorites.find((meal) => meal.idMeal === idMeal);
     }
     else{
       meal = meals.find((meal) => meal.idMeal === idMeal);
@@ -56,6 +67,7 @@ const AppProvider = ({ children }) => {
     const meal = meals.find((meal) => meal.idMeal === idMeal)
     const updatedFavorites = [...favorites, meal];
     setFavorites(updatedFavorites);
+    localStorage.setItem('favorites',JSON.stringify(updatedFavorites))
   }
 
   const removeFromFavorites = (idMeal) => {
