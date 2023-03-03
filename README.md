@@ -2,8 +2,6 @@
 
 ## Setting up Project Structure
 
----
-
 This project is based on the following tutorial:
 
 [Meals Application Repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp)
@@ -19,8 +17,6 @@ This project is based on the following tutorial:
 3. Import all the components in the App.jsx file
 
 ## Creating Context
-
----
 
 ### Setting Provider
 
@@ -42,8 +38,6 @@ This project is based on the following tutorial:
 3. Called the function inside of the `useEffect` hook and pass a second parameter an empty array.
 
 ## Meals Component
-
----
 
 ### Meals DB
 
@@ -98,8 +92,6 @@ We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will s
 
 ## Search Component
 
----
-
 1. Create the search component html structure:
    - Header element that contains:
      - a form with 1 input and two buttons
@@ -123,8 +115,6 @@ We will consume the [API Meals DB](https://www.themealdb.com/api.php). We will s
 3. Set inside of the button for random meal, the onClick property to the handle.
 
 ## Modal Component
-
----
 
 ### Basic structure
 
@@ -174,8 +164,6 @@ Now with this properties, we create the modal structure showing: image, title, d
 We catch the styles from the [repository](https://github.com/john-smilga/react-meals-application-freeCodeCamp/blob/main/src/App.css).
 
 ## Favorites Component
-
----
 
 ### Setting Favorites
 
