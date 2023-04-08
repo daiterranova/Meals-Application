@@ -9,10 +9,10 @@ const randomMealUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
 
 const getFavoritesFromLocalStorage = () => {
   let favorites = localStorage.getItem('favorites')
-  if(favorites){
+  if (favorites) {
     favorites = JSON.parse(localStorage.getItem('favorites'))
   }
-  else{
+  else {
     favorites = []
   }
   return favorites
@@ -48,10 +48,10 @@ const AppProvider = ({ children }) => {
   };
   const selectMeal = (idMeal, favoriteMeal) => {
     let meal;
-    if(favoriteMeal){
+    if (favoriteMeal) {
       meal = favorites.find((meal) => meal.idMeal === idMeal);
     }
-    else{
+    else {
       meal = meals.find((meal) => meal.idMeal === idMeal);
     }
     setSelectedMeal(meal)
@@ -63,11 +63,11 @@ const AppProvider = ({ children }) => {
 
   const addFavorites = (idMeal) => {
     const alreadyFavorite = favorites.find((meal) => meal.idMeal === idMeal)
-    if(alreadyFavorite) return
+    if (alreadyFavorite) return
     const meal = meals.find((meal) => meal.idMeal === idMeal)
     const updatedFavorites = [...favorites, meal];
     setFavorites(updatedFavorites);
-    localStorage.setItem('favorites',JSON.stringify(updatedFavorites))
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
   }
 
   const removeFromFavorites = (idMeal) => {
@@ -89,8 +89,8 @@ const AppProvider = ({ children }) => {
   return (
     //pass the array meals to the entire app
     <AppContext.Provider
-      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal,closeModal, addFavorites,favorites,removeFromFavorites}}>
-      {children} 
+      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal, closeModal, addFavorites, favorites, removeFromFavorites }}>
+      {children}
     </AppContext.Provider>
   );
 };
