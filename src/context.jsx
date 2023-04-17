@@ -70,6 +70,9 @@ const AppProvider = ({ children }) => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
   }
 
+  const isFavorite = (idMeal) => {
+    return favorites.find((meal) => meal.idMeal === idMeal) != null ? true : false
+  }
   const removeFromFavorites = (idMeal) => {
     const updatedFavorites = favorites.filter((meal) => meal.idMeal !== idMeal);
     setFavorites(updatedFavorites);
@@ -89,7 +92,7 @@ const AppProvider = ({ children }) => {
   return (
     //pass the array meals to the entire app
     <AppContext.Provider
-      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal, closeModal, addFavorites, favorites, removeFromFavorites }}>
+      value={{ meals, loading, setSearchTerm, fetchRandomMeal, showModal, selectMeal, selectedMeal, closeModal, addFavorites, favorites, removeFromFavorites, isFavorite }}>
       {children}
     </AppContext.Provider>
   );
