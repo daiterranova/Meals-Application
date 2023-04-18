@@ -10,8 +10,8 @@ import "./App.css";
 
 function App() {
 
-  const {favorites, showModal} = useGlobalContext();
-  
+  const { favorites, showModal } = useGlobalContext();
+
   return (
     <main>
       <Search />
