@@ -1,11 +1,11 @@
 import { useGlobalContext } from "../context";
 
 const Modal = () => {
-  const {selectedMeal, closeModal} = useGlobalContext();
+  const { selectedMeal, closeModal } = useGlobalContext();
 
-  const {strMeal: title, strMealThumb: image, strSource: source, strInstructions: description, strCategory: tag } = selectedMeal;
+  const { strMeal: title, strMealThumb: image, strSource: source, strInstructions: description, strCategory: tag } = selectedMeal;
   return (
-    <aside className="modal-overlay">
+    <aside className="modal-overlay" onClick={closeModal}>
       <section className="modal-container">
         <img src={image} className="img modal-img" />
         <article className="modal-content">
@@ -21,6 +21,6 @@ const Modal = () => {
       </section>
     </aside>
   )
-  
+
 };
 export default Modal;
