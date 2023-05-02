@@ -1,5 +1,5 @@
 import { useGlobalContext } from "../context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegThumbsUp } from "react-icons/fa";
 
 const Meals = () => {
@@ -18,13 +18,18 @@ const Meals = () => {
         No meals matched with your search. Please, try again
       </h4>
     );
+
   return (
     <section className="section-center">
       {meals.map((meal) => {
-        const { idMeal, strMeal: title, strMealThumb: image } = meal;
+        const { idMeal, strMeal: title, strMealThumb: image, strCategory: category } = meal;
         return (
           <article key={idMeal} className="single-meal">
-            <img src={image} className="img" onClick={() => { selectMeal(idMeal) }} />
+            <div>
+              <p className="tag text-small">{category}</p>
+              <img src={image} className="img" onClick={() => { selectMeal(idMeal) }} />
+            </div>
+
             <footer>
               <h5>{title}</h5>
               <button className="like-btn" onClick={() => { addFavorites(idMeal) }}
@@ -32,6 +37,7 @@ const Meals = () => {
                 <FaRegThumbsUp />
               </button>
             </footer>
+
           </article>
         );
       })}
