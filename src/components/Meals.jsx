@@ -4,7 +4,7 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const Meals = () => {
   //passing the context to the component
-  const { meals, loading, selectMeal, addFavorites, favoriteMealSelected, isFavorite } = useGlobalContext();
+  const { meals, loading, selectMeal, addFavorites, favoriteMealSelected, isFavorite, removeFromFavorites } = useGlobalContext();
   if (loading) {
     return (
       <section className="section">
@@ -19,6 +19,7 @@ const Meals = () => {
       </h4>
     );
 
+  const handleFavoriteMeal = (idMeal) => { isFavorite(idMeal) ? removeFromFavorites(idMeal) : addFavorites(idMeal) }
   return (
     <section className="section-center">
       {meals.map((meal) => {
@@ -32,7 +33,7 @@ const Meals = () => {
 
             <footer>
               <h5>{title}</h5>
-              <button className="like-btn" onClick={() => { addFavorites(idMeal) }}
+              <button className="like-btn" onClick={() => { handleFavoriteMeal(idMeal) }}
                 style={{ color: isFavorite(idMeal) ? "red" : "" }} >
                 <FaRegThumbsUp />
               </button>
