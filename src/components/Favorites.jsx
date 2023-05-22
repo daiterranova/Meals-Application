@@ -1,8 +1,9 @@
 import { useGlobalContext } from "../context";
+import { MdDelete } from "react-icons/md";
 
 const Favorites = () => {
 
-const {selectMeal, favorites,removeFromFavorites } = useGlobalContext();
+  const { selectMeal, favorites, removeFromFavorites } = useGlobalContext();
 
   return (
     <section className="favorites">
@@ -11,12 +12,15 @@ const {selectMeal, favorites,removeFromFavorites } = useGlobalContext();
         <div className="favorites-container">
           {
             favorites.map((favorite) => {
-              const {idMeal,strMealThumb: image,strMeal:title } = favorite
-              return (  <div key={idMeal} className="favorite-item">
-                  <img  id={idMeal} src={image} alt={title} className="img favorites-img" onClick={ () => {selectMeal(idMeal,true)}}/>
-                  <button className="remove-btn" onClick={() => removeFromFavorites(idMeal) }>remove</button>
-                </div>
-            )})
+              const { idMeal, strMealThumb: image, strMeal: title } = favorite
+              return (<div key={idMeal} className="favorite-item">
+                <img id={idMeal} src={image} alt={title} className="img favorites-img" onClick={() => { selectMeal(idMeal, true) }} />
+                <button className="remove-btn" onClick={() => removeFromFavorites(idMeal)}>
+                  <MdDelete />
+                </button>
+              </div>
+              )
+            })
           }
         </div>
       </div>

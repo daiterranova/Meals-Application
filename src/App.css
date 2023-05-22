@@ -41,7 +41,7 @@ html {
   --black: #222;
   --white: #fff;
   --red-light: #f8d7da;
-  --red-dark: #842029;
+  --red-dark: #ef071f;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
 
@@ -335,8 +335,8 @@ ul {
 
 /* Favorites */
 .favorites {
-  background: var(--black);
-  color: var(--white);
+  background: var(--grey-400);
+  color: var(--black);
   padding: 1rem 0;
 }
 
@@ -354,27 +354,32 @@ ul {
 
 .favorite-item {
   text-align: center;
+  position: relative;
 }
 
 .favorites-img {
-  width: 60px;
+  width: 80px;
   border-radius: 50%;
-  border: 5px solid var(--white);
+  border: 5px solid var(--primary-100);
   cursor: pointer;
 }
 
 .remove-btn {
-  margin-top: 0.25rem;
   background: transparent;
-  color: var(--white);
+  color: var(--grey-700);
   border: transparent;
   cursor: pointer;
-  font-size: 0.5rem;
   transition: var(--transition);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 10%;
+  font-size: 18px;
 }
 
 .remove-btn:hover {
   color: var(--red-dark);
+  transform: scale(1.3);
 }
 .tag {
   display: inline-block;
