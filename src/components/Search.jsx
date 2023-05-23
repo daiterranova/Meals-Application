@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useGlobalContext } from "../context";
-import FilterNav from "./FilterNav";
-
 const Search = () => {
   const [text, setText] = useState("");
   const { setSearchTerm, fetchRandomMeal } = useGlobalContext();
@@ -44,7 +42,6 @@ const Search = () => {
           </button>
         </form>
       </header>
-      <FilterNav />
     </>
   );
 };
