@@ -7,7 +7,7 @@ const Modal = () => {
   return (
     <aside className="modal-overlay" onClick={closeModal}>
       <section className="modal-container">
-        <img src={image} className="img modal-img" />
+        <img src={image} className="image modal-img" />
         <article className="modal-content">
           <h4>{title}</h4>
           <p>Instructions:</p>
