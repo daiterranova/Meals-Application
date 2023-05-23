@@ -7,6 +7,7 @@ import Modal from "./components/Modal";
 import Search from "./components/Search";
 import { useGlobalContext } from "./context";
 import "./App.css";
+import FilterNav from "./components/FilterNav";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     <main>
       <Search />
       {favorites.length > 0 && <Favorites />}
+      <FilterNav />
       <Meals />
       {showModal && <Modal />}
     </main>
