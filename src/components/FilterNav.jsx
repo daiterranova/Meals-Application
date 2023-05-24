@@ -1,34 +1,27 @@
 const FilterNav = () => {
     return (
 
-        <div>
-            <nav className="navbar navbar-expand-lg bg-light">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Filter</a>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="#"
-                            >All categories</a
-                            >
-                            <a className="nav-link" href="#">Side</a>
-                            <a className="nav-link" href="#">Vegetarian</a>
-                            <a className="nav-link">Dessert</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
+        <section className="navbar-container bg-light">
+            <ul className="nav justify-content-center">
+                <li className="nav-item dropdown text-secondary active">
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">All</a>
+                    <ul className="dropdown-menu">
+                        <li><a className="dropdown-item" href="#">Action</a></li>
+                        <li><a className="dropdown-item" href="#">Another action</a></li>
+                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-secondary" href="#">Side</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-secondary" href="#">Vegetarian</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link text-secondary">Dessert</a>
+                </li>
+            </ul>
+        </section >
 
     )
 }
