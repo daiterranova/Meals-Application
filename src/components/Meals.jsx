@@ -28,7 +28,7 @@ const Meals = () => {
           <article key={idMeal} className="single-meal">
             <div>
               <p className="tag text-small">{category}</p>
-              <img src={image} className="img" onClick={() => { selectMeal(idMeal) }} />
+              <img src={image} className="image" onClick={() => { selectMeal(idMeal) }} />
             </div>
 
             <footer>
