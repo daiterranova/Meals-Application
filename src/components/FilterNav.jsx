@@ -6,9 +6,9 @@ const FilterNav = () => {
                 <li className="nav-item dropdown text-secondary active">
                     <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">All</a>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                        <li><a className="dropdown-item" href="#">category1</a></li>
+                        <li><a className="dropdown-item" href="#">category2</a></li>
+                        <li><a className="dropdown-item" href="#">category3</a></li>
                     </ul>
                 </li>
                 <li className="nav-item">
