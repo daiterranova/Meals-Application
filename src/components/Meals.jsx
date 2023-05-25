@@ -4,7 +4,7 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const Meals = () => {
   //passing the context to the component
-  const { meals, loading, selectMeal, addFavorites, favoriteMealSelected, isFavorite, removeFromFavorites } = useGlobalContext();
+  const { meals, loading, selectMeal, addFavorites, favoriteMealSelected, isFavorite, removeFromFavorites, filteredMeals } = useGlobalContext();
   if (loading) {
     return (
       <section className="section">
@@ -22,7 +22,7 @@ const Meals = () => {
   const handleFavoriteMeal = (idMeal) => { isFavorite(idMeal) ? removeFromFavorites(idMeal) : addFavorites(idMeal) }
   return (
     <section className="section-center">
-      {meals.map((meal) => {
+      {filteredMeals.map((meal) => {
         const { idMeal, strMeal: title, strMealThumb: image, strCategory: category } = meal;
         return (
           <article key={idMeal} className="single-meal">
