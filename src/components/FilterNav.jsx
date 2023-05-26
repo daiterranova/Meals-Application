@@ -1,11 +1,14 @@
 import { useGlobalContext } from "../context";
 
 const FilterNav = () => {
-    const { filterMealsByCategory } = useGlobalContext();
+    const { filterMealsByCategory, meals } = useGlobalContext();
     const handleClick = (e, cat) => {
         e.preventDefault();
         filterMealsByCategory(cat)
     }
+    let menuItems = [...new Set(meals.map((meal) => meal.strCategory))];
+    const mainCategories = ['Dessert', 'Side', 'Vegetarian'];
+    menuItems = menuItems.filter(category => !mainCategories.includes(category));
 
     return (
 
@@ -14,21 +17,25 @@ const FilterNav = () => {
                 <li className="nav-item">
                     <a className="nav-link text-secondary fw-bold" id="dessert" href="#" onClick={e => handleClick(e, 'All')}>All</a>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link text-secondary" id="side" href="#" onClick={e => handleClick(e, 'Side')}>Side</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-secondary" id='vegetarian' onClick={e => handleClick(e, 'Vegetarian')} href="#">Vegetarian</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-secondary" id="dessert" href="#" onClick={e => handleClick(e, 'Dessert')}>Dessert</a>
-                </li>
+                {
+                    mainCategories.map((category) => {
+                        return (
+                            <li className="nav-item" >
+                                <a className="nav-link text-secondary" href="#" id={category} key={category} onClick={e => handleClick(e, category)}>{category}</a>
+                            </li>
+                        )
+                    })
+                }
                 <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Others</a>
                     <ul className="dropdown-menu">
-                        <li><a className="dropdown-item" href="#">category1</a></li>
-                        <li><a className="dropdown-item" href="#">category2</a></li>
-                        <li><a className="dropdown-item" href="#">category3</a></li>
+                        {
+                            menuItems.map((category) => {
+                                return (
+                                    <li><a className="dropdown-item" id={category} key={category} href="#" onClick={e => handleClick(e, category)}>{category}</a></li>
+                                );
+
+                            })}
                     </ul>
                 </li>
             </ul>
